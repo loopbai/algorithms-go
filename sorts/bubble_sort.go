@@ -7,6 +7,10 @@ import (
 	"strings"
 )
 
+var (
+	numbers []string
+)
+
 func bubbleSort(slice []string) []string {
 	swapped := false
 	for i := 0; i < len(slice)-1; i++ {
@@ -24,15 +28,17 @@ func bubbleSort(slice []string) []string {
 	return slice
 }
 
-func main() {
+func init() {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Printf("Enter numbers separated by a comma(,): ")
 	text, _ := reader.ReadString('\n')
-	sli := strings.Split(text, ",")
+	numbers = strings.Split(text, ",")
+}
 
+func main() {
 	fmt.Println("Origin numbers: ")
-	fmt.Println(strings.Join(sli, ","))
+	fmt.Println(strings.Join(numbers, ","))
 
 	fmt.Println("Sorted numbers: ")
-	fmt.Println(strings.Join(bubbleSort(sli), ","))
+	fmt.Println(strings.Join(bubbleSort(numbers), ","))
 }
