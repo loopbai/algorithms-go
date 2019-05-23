@@ -1,44 +1,34 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"strings"
 )
 
-var (
-	numbers []string
-)
-
-func bubbleSort(slice []string) []string {
-	swapped := false
+func bubbleSort(slice []int) []int {
+	var swapped bool
 	for i := 0; i < len(slice)-1; i++ {
+		swapped = false
 		// len(slice)-1-i 後面已經排序過了，所以無需再判斷
 		for j := 0; j < len(slice)-1-i; j++ {
 			if slice[j] > slice[j+1] {
-				slice[j], slice[j+1] = strings.TrimSpace(slice[j+1]), strings.TrimSpace(slice[j])
+				slice[j], slice[j+1] = slice[j+1], slice[j]
+				swapped = true
 			}
 		}
-		//fmt.Println(strings.Join(slice, ","))
-		if swapped {
+		//fmt.Println(slice)
+		if swapped == false {
 			break
 		}
 	}
 	return slice
 }
 
-func init() {
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Printf("Enter numbers separated by a comma(,): ")
-	text, _ := reader.ReadString('\n')
-	numbers = strings.Split(text, ",")
-}
-
 func main() {
+	numbers := []int{4, 2, 323, 44, 67, 4, 6, 87, 3, 56, 7, 3}
+
 	fmt.Println("Origin numbers: ")
-	fmt.Println(strings.Join(numbers, ","))
+	fmt.Println(numbers)
 
 	fmt.Println("Sorted numbers: ")
-	fmt.Println(strings.Join(bubbleSort(numbers), ","))
+	fmt.Println(bubbleSort(numbers))
 }
