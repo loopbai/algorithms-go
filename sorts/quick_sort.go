@@ -2,18 +2,18 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/loopbai/algorithms-go/utils"
 )
 
 func quickSort(slice []int) []int {
-
 	length := len(slice)
 	if length < 2 {
 		return slice
 	}
 
-	var left, right, qSorted []int
+	var left, right, sorted []int
 	pivot := slice[0]
-
 	for i := 1; i < length; i++ {
 		switch {
 		case slice[i] < pivot:
@@ -24,18 +24,20 @@ func quickSort(slice []int) []int {
 			fmt.Println("Error...")
 		}
 	}
-	qSorted = append(qSorted, quickSort(left)...)
-	qSorted = append(qSorted, pivot)
-	qSorted = append(qSorted, quickSort(right)...)
-	return qSorted
+
+	sorted = append(sorted, quickSort(left)...)
+	sorted = append(sorted, pivot)
+	sorted = append(sorted, quickSort(right)...)
+	utils.DisplaySlice(sorted)
+	return sorted
 }
 
 func main() {
 	numbers := []int{4, 2, 323, 44, 67, 4, 6, 87, 3, 56, 7, 3}
 
 	fmt.Println("Origin numbers: ")
-	fmt.Println(numbers)
+	utils.DisplaySlice(numbers, -1, -1)
 
-	fmt.Println("Sorted numbers: ")
-	fmt.Println(quickSort(numbers))
+	fmt.Println("Sorting numbers: ")
+	quickSort(numbers)
 }
