@@ -26,7 +26,7 @@ func selectionSort(slice []int) []int {
 }
 
 func main() {
-	numbers := []int{4, 2, 323, 44, 67, 4, 6, 87, 3, 56, 7, 3}
+	numbers := []int{4, 323, 44, 67, 4, 6, 87, 56, 7, 3}
 
 	fmt.Println("Origin numbers: ")
 	utils.DisplaySlice(numbers, -1, -1)
