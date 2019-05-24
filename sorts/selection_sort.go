@@ -29,7 +29,7 @@ func main() {
 	numbers := []int{4, 323, 44, 67, 4, 6, 87, 56, 7, 3}
 
 	fmt.Println("Origin numbers: ")
-	utils.DisplaySlice(numbers, -1, -1)
+	utils.DisplaySlice(numbers)
 
 	fmt.Println("Sorting numbers: ")
 	selectionSort(numbers)
